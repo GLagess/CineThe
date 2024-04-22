@@ -1,0 +1,203 @@
+JAVASCRIPT:
+
+document.getElementById("filmeForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    var filmeSelecionado = document.getElementById("filmes").value;
+    var filmeNome = document.querySelector('option[value="' + filmeSelecionado + '"]').innerText;
+    
+    var mensagemDiv = document.getElementById("mensagem");
+    mensagemDiv.style.display = "block";
+    mensagemDiv.innerHTML = "Que bom que se interessou pelo filme " + filmeNome + "! Agora nos conte o que mais lhe chamou atenção e o que espera dele:<br>";
+    
+    var opiniaoInput = document.createElement("textarea");
+    opiniaoInput.setAttribute("id", "opiniao");
+    mensagemDiv.appendChild(opiniaoInput);
+    
+    var submitOpiniao = document.createElement("input");
+    submitOpiniao.setAttribute("type", "button");
+    submitOpiniao.setAttribute("id", "submitOpiniao");
+    submitOpiniao.setAttribute("value", "Enviar Opinião");
+    submitOpiniao.addEventListener("click", function() {
+        var opiniao = opiniaoInput.value;
+        document.getElementById("agradecimento").innerText = "Obrigado por compartilhar sua opinião! Estamos aguardando sua presença no CineThe.";
+    });
+    mensagemDiv.appendChild(submitOpiniao);
+});
+
+document.getElementById("btnvoltar").addEventListener("click", function() {
+    
+    window.location.href = "/index.html";
+});
+
+HTML:
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de avaliação</title>
+    <link rel="stylesheet" href="formulariocss.css">
+    <link rel="shortcut icon" href="/img/6530da6b-d2dc-4757-9095-cca51ae7cc5e.jpg" type="image/x-icon">
+</head>
+<body>
+
+<div id="header">
+    <img src="/img/6530da6b-d2dc-4757-9095-cca51ae7cc5e.jpg" alt="Logo do CineThe" height="50" width="50">
+    <h1>CineThe</h1>
+</div>
+
+<div id="container">
+    <h2>Escolha de Filme</h2>
+
+    <form id="filmeForm">
+        <label for="filmes">Escolha o filme que você mais gostou:</label>
+        <select id="filmes" name="filmes">
+            <option value="filme1">Silvio Santos</option>
+            <option value="filme2">A Teia</option>
+            <option value="filme3">Divertida Mente 2</option>
+            <option value="filme4">O Dublê</option>
+            <option value="filme5">Furiosa: Uma saga mad max</option>
+            <option value="filme6">Planeta dos Macacos</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Confirmar">
+    </form>
+
+    <div id="mensagem"></div>
+
+    <div id="agradecimento"></div>
+</div>
+<button id="btnvoltar">Voltar</button>
+
+<script src="js.js"></script>
+
+</body>
+</html>
+
+
+CSS: 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+#header img {
+    height: 50px;
+    vertical-align: middle;
+}
+
+#header h1 {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+#container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#mensagem {
+    display: none;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+#opiniao {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#submitOpiniao {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submitOpiniao:hover {
+    background-color: #0056b3;
+}
+
+#filmeFoto {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+#agradecimento {
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+}
+.container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;
+    margin-top: 20px;
+}
+
+.container button:hover {
+    background-color: #0056b3;
+}
